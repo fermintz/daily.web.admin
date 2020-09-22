@@ -2,25 +2,39 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import CalculateEnd from "../views/calculate-end.vue";
+import Login from "../views/login.vue"
+import DefaultLayout from "../layout/default.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
-    meta:{
-      name:'정산예정내역'
-    }
+    path: "/login",
+    name: "Login",
+    component: Login,
   },
   {
-    path: "/calculate-end",
-    name: "Calculate-end",
-    component: CalculateEnd,
-    meta:{
-      name:'정산처리내역'
-    }
+    path:"/",
+    name:'default',
+    component: DefaultLayout,
+    children:[
+      {
+        path: "/",
+        name: "Home",
+        component: Home,
+        meta:{
+          name:'정산예정내역',
+        }
+      },
+      {
+        path: "/calculate-end",
+        name: "Calculate-end",
+        component: CalculateEnd,
+        meta:{
+          name:'정산처리내역',
+        }
+      },
+    ]
   },
 ];
 
