@@ -6,9 +6,9 @@
         <div class="category">
           <v-icon class="homeIcon">mdi-home</v-icon>
           <v-icon class="arrow">mdi-chevron-right</v-icon>
-          <span>주문관리</span>
+          <span>{{$route.meta.cate}}</span>
           <v-icon class="arrow">mdi-chevron-right</v-icon>
-          <span class="active">전체주문내역</span>
+          <span class="active">{{$route.meta.name}}</span>
         </div>
         <div class="btns">
           <v-btn outlined>로그아웃</v-btn>

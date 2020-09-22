@@ -2,6 +2,8 @@
   <v-navigation-drawer
     width="220"
     app
+    mobile-breakpoint="0"
+    :permanent="true"
   >
     <div class="navigation fill-height">
       <div class="logo-box">
@@ -80,6 +82,10 @@ export default {
 
   .logo{
     text-align:center;
+    
+    img{
+      height:60px;
+    }
   
     h2{
       color:#fff;

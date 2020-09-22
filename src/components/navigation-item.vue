@@ -33,14 +33,9 @@ export default {
   props: ["items"],
   data() {
     return {
-      isActive: false,
+      isActive: true,
     };
   },
-
-  // mounted() {
-  //   const route = this.$route
-  //   console.log(route.name, route.path, this.items.child[0].path);
-  // },
 
   computed: {
     nowPath() {

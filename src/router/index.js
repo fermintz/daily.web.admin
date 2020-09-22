@@ -23,6 +23,7 @@ const routes = [
         name: "Home",
         component: Home,
         meta:{
+          cate:'정산관리',
           name:'정산예정내역',
         }
       },
@@ -31,6 +32,7 @@ const routes = [
         name: "Calculate-end",
         component: CalculateEnd,
         meta:{
+          cate:'정산관리',
           name:'정산처리내역',
         }
       },
