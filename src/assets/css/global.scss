@@ -29,6 +29,17 @@ p{margin:0;padding:0}
 /* 테이블 공통 CSS */
 
 .dataSection{
+
+  .table-top{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom:15px;
+    .number{
+      strong{color:#d22828;font-weight:500;letter-spacing: 0;}
+    }
+  }
+
   table{
     border-spacing: 0;
     width:100%;

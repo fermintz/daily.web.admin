@@ -4,6 +4,11 @@
     <SearchOptions />
 
     <div class="dataSection">
+      <div class="table-top">
+        <div class="number">
+          목록 <strong>72</strong>건
+        </div>
+      </div>
       <table cellpadding="0" cellspacing="0">
         <thead>
           <tr>
@@ -40,11 +45,11 @@
         </tbody>
       </table>
 
-      <Pagination
-        data="tableData"
-        :nowPage="page"
-        :totalPage="totalData.length"
-        @change-page="pageChangeEvent($event)"
+      <v-pagination
+        v-model="page"
+        :length="5"
+        style="margin-top:20px;"
+        color="#01a1dd"
       />
     </div>
 
@@ -54,14 +59,13 @@
 
 <script>
 import axios from "axios";
-import Pagination from "@/components/pagination.vue";
 import SearchOptions from '@/components/searchOptions.vue';
 import CalculateList from '@/components/modal/calculateList.vue';
 import { chunk } from "lodash";
 
 export default {
   components: {
-    Pagination, SearchOptions,CalculateList
+    SearchOptions,CalculateList
   },
   data() {
     return {
