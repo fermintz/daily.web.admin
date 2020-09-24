@@ -1,10 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Calculate from "../views/calculate.vue";
 import CalculateEnd from "../views/calculate-end.vue";
 import Login from "../views/login.vue"
 import DefaultLayout from "../layout/default.vue";
 import TotalOrder from "../views/totalOrder.vue";
+import AddRequest from "../views/addRequest.vue";
 
 Vue.use(VueRouter);
 
@@ -20,6 +22,15 @@ const routes = [
     component: DefaultLayout,
     children:[
       {
+        path: "/",
+        name: "home",
+        component: Home,
+        meta:{
+          cate:'메인',
+          name:'메인화면',
+        }
+      },
+      {
         path: "/totalOrder",
         name: "totalOrder",
         component: TotalOrder,
@@ -29,9 +40,18 @@ const routes = [
         }
       },
       {
-        path: "/",
-        name: "home",
-        component: Home,
+        path: "/addRequest",
+        name: "addRequest",
+        component: AddRequest,
+        meta:{
+          cate:'주문관리',
+          name:'추가요청내역',
+        }
+      },
+      {
+        path: "/calculate-end",
+        name: "calculate",
+        component: Calculate,
         meta:{
           cate:'정산관리',
           name:'정산예정내역',
@@ -39,7 +59,7 @@ const routes = [
       },
       {
         path: "/calculate-end",
-        name: "Calculate-end",
+        name: "calculate-end",
         component: CalculateEnd,
         meta:{
           cate:'정산관리',

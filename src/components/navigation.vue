@@ -6,7 +6,7 @@
     :permanent="true"
   >
     <div class="navigation fill-height">
-      <div class="logo-box">
+      <div class="logo-box" @click="$router.push('/')" v-ripple>
         <div class="logo">
           <img src="@/assets/img/logo-w.png">
           <h2>데일리세탁</h2>
@@ -38,6 +38,10 @@ export default {
               name:'전체주문내역',
               path:'/totalOrder',
             },
+            {
+              name:'추가요청내역',
+              path:'/addRequest',
+            },
 
           ],
         },
@@ -57,6 +61,9 @@ export default {
         }
       ],
     }
+  },
+  mounted(){
+    console.log(this.$router)
   },
   methods:{
     

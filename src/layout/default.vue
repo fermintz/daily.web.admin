@@ -3,7 +3,8 @@
     <Navigation />
     <v-main>
       <div class="header">
-        <div class="category">
+        <div v-show="this.$route.name === 'home'" />
+        <div class="category" v-show="this.$route.name !== 'home'">
           <v-icon class="homeIcon">mdi-home</v-icon>
           <v-icon class="arrow">mdi-chevron-right</v-icon>
           <span>{{$route.meta.cate}}</span>
@@ -29,9 +30,6 @@ export default {
     Navigation
   },
 
-  data: () => ({
-    //
-  })
 };
 </script>
 
