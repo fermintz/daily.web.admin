@@ -8,6 +8,9 @@
         <div class="number">
           목록 <strong>72</strong>건
         </div>
+        <div class="align">
+          -
+        </div>
       </div>
       <table cellpadding="0" cellspacing="0">
         <thead>

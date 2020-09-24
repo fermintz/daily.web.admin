@@ -74,6 +74,14 @@ p{margin:0;padding:0}
         background:#f8f8f8;
       }
     }
+
+    td.btns{
+      .v-btn{
+        height:28px;
+        min-width:70px;
+        border:1px solid #c2c2c2;
+      }
+    }
   }
 }
 

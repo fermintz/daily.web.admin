@@ -17,17 +17,20 @@
               <td>2020.09.01 ~ 2020.09.15</td>
             </tr>
             <tr>
-              <th>담당자</th>
-              <td>박수민</td>
               <th>은행정보</th>
               <td>우리은행 1002-537-353-918</td>
+              <th>담당자</th>
+              <td>박수민</td>
             </tr>
           </table>
         </div>
         <div class="dataSection">
           <div class="table-top">
             <div class="number">
-              주문 <strong>324</strong>건
+              목록 <strong>72</strong>건
+            </div>
+            <div class="align">
+              -
             </div>
           </div>
           <table>
@@ -41,8 +44,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in 10" :key="item">
-                <td>2020년 9월 21일 13:45:21</td>
+              <tr v-for="item in 6" :key="item">
+                <td>2020년 9월 21일 13:45:22</td>
                 <td>홍길동</td>
                 <td>35,000 원</td>
                 <td>3,000 원</td>
@@ -81,22 +84,27 @@ export default {
 
 <style lang="scss" scoped>
   .dataInfo{
-    margin-bottom:20px;
+    margin-bottom:30px;
+
     table{
+      table-layout: fixed;
       border-spacing: 0;
       width:100%;
       border:1px solid #e2e2e2;
+      border-top:1px solid #c2c2c2;
       border-right:0px;
       border-bottom:0px;
+
       th{
-        width:130px;
-        border-right:1px solid #e2e2e2;
-        padding:10px;
+        width:150px;
+        height:40px;
         border-bottom:1px solid #e2e2e2;
-        font-size:13px;
+        font-size:12px;
         text-align:left;
         font-weight:500;
-        background:#f7fafb;
+        background:#f8f8f8;
+        vertical-align: top;
+        padding:10px;
       }
       td{
         border-right:1px solid #e2e2e2;
@@ -105,22 +113,6 @@ export default {
       }
     }
   }
-
-  .dataSection{
-
-    .table-top{
-      display:flex;
-      align-items: center;
-      height:40px;
-      
-      .number{
-        strong{
-          color:#d22828;
-        }
-      }
-    }
-  }
-
   .v-card-actions{
     background: #01a1dd;
   }
