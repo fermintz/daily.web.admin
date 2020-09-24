@@ -4,56 +4,28 @@
     <SearchOptions />
 
     <div class="dataSection">
-      <div class="table-top">
-        <div class="number">
-          목록 <strong>72</strong>건
-        </div>
-        <div class="align">
-          -
-        </div>
-      </div>
-      <table cellpadding="0" cellspacing="0">
-        <thead>
-          <tr>
-            <th>정산완료일시</th>
-            <th>정산대상기간</th>
-            <th>기사명</th>
-            <th>주문건수</th>
-            <th>입금계좌</th>
-            <th>정산금액</th>
-            <th>메모</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(item, index) in tableData" :key="index">
-            <td>2020.09.21 12:34:53</td>
-            <td>2020.09.01 ~ 2020.09.15</td>
-            <td class="partner">{{ item.name }}</td>
-            <td class="order-number">
-              <a @click="calculateList">324 건</a>
-            </td>
-            <td>우리은행 1002-537-353918</td>
-            <td>1,357,000 원</td>
-            <td>
-              <v-hover v-slot:default="{ hover }">
-                <div class="tooltip">
-                  <div class="tooltip-box" v-show="hover">
-                  안녕하세요 반갑습니다 하하하하하하하 히히히히히히 호호호호
-                  </div>
-                    <v-icon :color="hover ? '#01a1dd' : ''">mdi-card-text</v-icon>
-                </div>
-              </v-hover>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <v-pagination
-        v-model="page"
-        :length="5"
-        style="margin-top:20px;"
-        color="#01a1dd"
-      />
+      <v-data-table
+        :headers="tHead"
+        :items="tData"
+        loading="#01a1dd"
+        loader-height="1"
+      >
+        <template v-slot:item.orderNumber = "{item}">
+          <a @click="calculateList">
+            {{item.orderNumber}}
+          </a>
+        </template>
+        <template v-slot:item.memo = "{ item }">
+          <v-hover v-slot:default="{ hover }">
+            <div class="tooltip">
+              <div class="tooltip-box" v-show="hover">
+                {{item.memo}}
+              </div>
+                <v-icon :color="hover ? '#01a1dd' : ''">mdi-card-text</v-icon>
+            </div>
+          </v-hover>
+        </template>
+      </v-data-table>
     </div>
 
     <CalculateList ref="calculateList"/>
@@ -61,10 +33,9 @@
 </template>
 
 <script>
-import axios from "axios";
 import SearchOptions from '@/components/searchOptions.vue';
 import CalculateList from '@/components/modal/calculateList.vue';
-import { chunk } from "lodash";
+
 
 export default {
   components: {
@@ -74,29 +45,36 @@ export default {
     return {
       dates: ["날짜검색", ""],
       datePicker: false,
-      tableData: [],
-      totalData: [],
       page: 1,
+      tHead:[
+        {text:'정산완료일시', align:'start', sortable:true,value:'completeDate'},
+        {text:'정산대상기간', align:'start', sortable:true,value:'calculateDate'},
+        {text:'담당자', align:'start', sortable:true,value:'partnerName'},
+        {text:'주문건수', align:'start', sortable:true,value:'orderNumber'},
+        {text:'입금계좌정보', align:'start', sortable:true,value:'bankInfo'},
+        {text:'메모하기', align:'start',sortable:true,value:'memo'}
+      ],
+      tData:[
+        {
+          completeDate:'2020.09.21 12:34:53',
+          calculateDate:'2020.09.01 ~ 2020.09.15',
+          partnerName:'홍길동',
+          orderNumber:135,
+          bankInfo:'우리은행 1002-537-353918',
+          memo:'등록된 메모가 없습니다 등록된 메모가 없습니다 등록된 메모가 없습니다 등록된 메모가 없습니다 등록된 메모가 없습니다 등록된 메모가 없습니다'
+        },
+        {
+          completeDate:'2020.09.21 12:11:12',
+          calculateDate:'2020.09.01 ~ 2020.09.15',
+          partnerName:'김두한',
+          orderNumber:128,
+          bankInfo:'우리은행 1002-735-221918',
+          memo:'등록된 메모가 없습니다 등록된 메모가 없습니다 등록된 메모가 없습니다 등록된 메모가 없습니다 등록된 메모가 없습니다 등록된 메모가 없습니다'
+        }
+      ],
     };
   },
-  mounted() {
-    axios({
-      method: "GET",
-      url: "/api/contacts",
-      params: {
-        pageno: 1,
-        pagesize: 100,
-      },
-    })
-      .then((res) => {
-        console.log(res.data.contacts);
-        this.totalData = chunk(res.data.contacts, 20);
-        this.tableData = this.totalData[0];
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },
+  
   computed: {
     dateRangeText() {
       return this.dates.join(" ~ ");
@@ -134,16 +112,14 @@ export default {
       background:#fff;
       border:1px solid #e2e2e2;
       width:300px;
-      padding:15px;
+      padding:10px;
       right:100%;
       margin-right:10px;
-      top:0px;
-      z-index:9;
+      bottom:0;
+      z-index:99999;
       border-radius:4px;
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
   }
-
-  
 }
 </style>

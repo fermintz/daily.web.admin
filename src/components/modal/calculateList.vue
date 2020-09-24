@@ -25,40 +25,13 @@
           </table>
         </div>
         <div class="dataSection">
-          <div class="table-top">
-            <div class="number">
-              목록 <strong>72</strong>건
-            </div>
-            <div class="align">
-              -
-            </div>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>주문일</th>
-                <th>주문자</th>
-                <th>결제금액</th>
-                <th>추가결제금액</th>
-                <th>배송비</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="item in 6" :key="item">
-                <td>2020년 9월 21일 13:45:22</td>
-                <td>홍길동</td>
-                <td>35,000 원</td>
-                <td>3,000 원</td>
-                <td>3,500 원</td>
-              </tr>
-            </tbody>
-          </table>
-          <v-pagination
-            v-model="page"
-            :length="5"
-            style="margin-top:20px;"
-            color="#01a1dd"
-          />
+          <v-data-table
+            :headers="tHead"
+            :items="tData"
+            loding="#01a1dd"
+            loader-height="2"
+          >
+          </v-data-table>
         </div>
       </v-card-text>
       <v-card-actions style="background:#01a1dd">
@@ -76,7 +49,30 @@ export default {
   mixins: [ModalMixin],
   data(){
     return{
-      page:1
+      page:1,
+      tHead:[
+        {text:'주문일', align:'start', sortable:true, value:'userOrderDate'},
+        {text:'주문자', align:'start', sortable:true, value:'userName'},
+        {text:'주문금액', align:'start', sortable:true, value:'orderPrice'},
+        {text:'추가금액', align:'start', sortable:true, value:'addPrice'},
+        {text:'배송비', align:'start', sortable:true, value:'deliveryPrice'},
+      ],
+      tData:[
+        {
+          userOrderDate:'2020년 9월 21일 13:45:22',
+          userName:'홍길동',
+          orderPrice:54000,
+          addPrice:5000,
+          deliveryPrice:3500,
+        },
+        {
+          userOrderDate:'2020년 9월 19일 12:25:54',
+          userName:'궁예',
+          orderPrice:34000,
+          addPrice:5000,
+          deliveryPrice:3500,
+        },
+      ],
     }
   }
 }
@@ -91,7 +87,6 @@ export default {
       border-spacing: 0;
       width:100%;
       border:1px solid #e2e2e2;
-      border-top:1px solid #c2c2c2;
       border-right:0px;
       border-bottom:0px;
 
