@@ -37,6 +37,7 @@ export default {
 
 
 <style lang="scss" scoped>
+
 .header{
   position:absolute;
   display:flex;
@@ -65,4 +66,6 @@ export default {
     }
   }
 }
+
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <dl>
+  <dl :class="{active:isActive}">
     <dt v-ripple @click="toggle">
       <div class="name">
         <v-icon>{{ items.icon }}</v-icon>
@@ -60,6 +60,7 @@ dl {
   left: -1px;
   border-left: 1px solid #292929;
   padding: 0px;
+  
 
   dt {
     display: flex;
@@ -151,5 +152,9 @@ dl {
       }
     }
   }
+}
+
+dl.active{
+  border-left:1px solid #01a1dd;
 }
 </style>

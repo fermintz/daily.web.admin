@@ -25,3 +25,60 @@ p{margin:0;padding:0}
   padding:20px;
   padding-top:70px;
 }
+
+/* 테이블 공통 CSS */
+
+.dataSection{
+  table{
+    border-spacing: 0;
+    width:100%;
+    border:1px solid #e2e2e2;
+
+    th{
+      border-bottom:1px solid #01a1dd;
+      border-right:1px solid #e2e2e2;
+      padding:10px;
+      text-align:left;
+      font-size:13px;
+      font-weight:500;
+    }
+    th:last-child{
+      border-right:0px;
+    }
+    td{
+      border-bottom:1px solid #e2e2e2;
+      border-right:1px solid #e2e2e2;
+      padding:10px;
+      font-size:12px;
+      letter-spacing: 0;
+
+      a{
+        text-decoration: underline;
+      }
+    }
+    td:last-child{border-right:0px;}
+
+    tbody{
+      tr:nth-child(2n){
+        background:#f8f8f8;
+      }
+    }
+  }
+}
+
+.v-pagination{
+  li{
+    button{
+      min-width:26px;
+      height:26px;
+      border:1px solid #c2c2c2;
+      box-shadow: none;
+      font-size:11px;
+      outline: none;
+    }
+    button:hover{
+      border:1px solid #01a1dd;
+    }
+
+  }
+}

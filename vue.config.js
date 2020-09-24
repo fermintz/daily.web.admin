@@ -1,3 +1,14 @@
 module.exports = {
-  transpileDependencies: ["vuetify"]
+  transpileDependencies: ["vuetify"],
+  devServer: {
+    proxy: {
+        '/api': {
+            target: 'http://sample.bmaster.kro.kr',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/api': ''
+            }
+        }
+    }
+  }
 };

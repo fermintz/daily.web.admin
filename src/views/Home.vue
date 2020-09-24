@@ -12,6 +12,10 @@
     <div class="list-items" v-for="(item, index) in items" :key="index">
       <CalculateItem :item="item"/>
     </div>
+
+    <div class="no-list" v-show="items.length === 0">
+      ※ 처리할 정산건이 없습니다
+    </div>
   </div>
 </template>
 
@@ -65,5 +69,11 @@ export default {
     color:#888;
     font-size:12px;
   }
+}
+
+.no-list{
+  border:1px solid #e2e2e2;
+  padding:20px;
+  background: #fff;;
 }
 </style>

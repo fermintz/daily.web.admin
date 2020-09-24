@@ -35,11 +35,10 @@ export default {
           icon:'mdi-text-box-outline',
           child:[
             {
-              name:'전체주문내역'
+              name:'전체주문내역',
+              path:'/totalOrder',
             },
-            {
-              name:'주문취소내역'
-            },
+
           ],
         },
         {

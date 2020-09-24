@@ -4,13 +4,14 @@ import Home from "../views/Home.vue";
 import CalculateEnd from "../views/calculate-end.vue";
 import Login from "../views/login.vue"
 import DefaultLayout from "../layout/default.vue";
+import TotalOrder from "../views/totalOrder.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/login",
-    name: "Login",
+    name: "login",
     component: Login,
   },
   {
@@ -19,8 +20,17 @@ const routes = [
     component: DefaultLayout,
     children:[
       {
+        path: "/totalOrder",
+        name: "totalOrder",
+        component: TotalOrder,
+        meta:{
+          cate:'주문관리',
+          name:'전체주문내역',
+        }
+      },
+      {
         path: "/",
-        name: "Home",
+        name: "home",
         component: Home,
         meta:{
           cate:'정산관리',
