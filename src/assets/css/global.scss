@@ -1,9 +1,8 @@
 html{
   font-family:'SCDream';
-  letter-spacing:-0.7px;
   font-weight:400;
   word-break: keep-all; 
-  color:#292929;
+  color:#494949;
   font-size:14px;
 }
 
@@ -29,7 +28,6 @@ p{margin:0;padding:0}
 /* 테이블 공통 CSS */
 
 .dataSection{
-
   .table-top{
     display:flex;
     align-items: center;
@@ -53,10 +51,12 @@ p{margin:0;padding:0}
 
   .v-data-table-header{
     border:0px;
+    
   }
 
   table{
     border:0px;
+    
     tr:nth-child(2n){
       td{background:#f8f8f8;}
     }
@@ -80,3 +80,23 @@ p{margin:0;padding:0}
   }
 }
 
+.horizonTable{
+  width:100%;
+  border-spacing: 0;
+  border-top:1px solid #c2c2c2;
+  font-size:13px;
+
+  th,td{
+    border-bottom:1px solid #e2e2e2;
+    padding:10px 15px;
+  }
+  th{
+    width:150px;
+    font-weight:400;
+    background:#f8f8f8;
+    font-size:13px;
+    vertical-align: top;   
+    text-align: left;
+    color:#595959;
+  }
+}

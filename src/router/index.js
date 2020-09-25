@@ -7,6 +7,7 @@ import Login from "../views/login.vue"
 import DefaultLayout from "../layout/default.vue";
 import TotalOrder from "../views/totalOrder.vue";
 import AddRequest from "../views/addRequest.vue";
+import OrderDetail from "../views/orderDetail.vue";
 
 Vue.use(VueRouter);
 
@@ -37,7 +38,16 @@ const routes = [
         meta:{
           cate:'주문관리',
           name:'전체주문내역',
-        }
+        },
+      },
+      {
+        path:"/totalOrder/detail",
+        name:"orderDetail",
+        component: OrderDetail,
+        meta:{
+          cate:'주문관리',
+          name:'상세보기',
+        },
       },
       {
         path: "/addRequest",
@@ -49,7 +59,7 @@ const routes = [
         }
       },
       {
-        path: "/calculate-end",
+        path: "/calculate",
         name: "calculate",
         component: Calculate,
         meta:{

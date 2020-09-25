@@ -20,7 +20,7 @@
         :items-per-page="10"
       >
         <template v-slot:item.detail="{item}">
-          <v-btn text @click="orderDetail" class="outline">{{item.detail}}</v-btn>
+          <v-btn text @click="$router.push('/totalOrder/detail')" class="outline">{{item.detail}}</v-btn>
         </template>
       </v-data-table>
     </div>

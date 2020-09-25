@@ -51,7 +51,7 @@ export default {
           child:[
             {
               name:'정산예정내역',
-              path:'/',
+              path:'/calculate',
             },
             {
               name:'정산처리내역',
