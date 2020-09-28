@@ -28,6 +28,10 @@ p{margin:0;padding:0}
 /* 테이블 공통 CSS */
 
 .dataSection{
+  background:#fff;
+  border:1px solid #e2e2e2;
+  padding:20px;
+
   .table-top{
     display:flex;
     align-items: center;
@@ -83,7 +87,7 @@ p{margin:0;padding:0}
 .horizonTable{
   width:100%;
   border-spacing: 0;
-  border-top:1px solid #c2c2c2;
+  border-top:1px solid #292929;
   font-size:13px;
 
   th,td{

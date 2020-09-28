@@ -170,8 +170,14 @@
           <dl class="addPrice">
             <dt>추가결제정보</dt>
             <dd>
-              추가사유<br>
-              추가금액
+              <span>
+                <label>추가금액</label>
+                <strong>5,000 원</strong>
+              </span>
+              <span>
+                <label>추가사유</label>
+                <strong>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, quos necessitatibus, deserunt quod voluptates aliquid obcaecati reprehenderit alias, placeat dolor veritatis consectetur. Facilis, distinctio quae est non natus in minus?</strong>
+              </span>
             </dd>
           </dl>
         </v-col>
@@ -368,12 +374,23 @@ dl.cancle-btns{
 
 dl.orderProduct{
   dd{
-    border:1px solid #c2c2c2;
+    border:1px solid #e2e2e2;
+    border-top:1px solid #292929;
   }
 }
 
 dl.addPrice{
-  dd{border:1px solid #e2e2e2;padding:20px;}
+  dd{
+    border:1px solid #e2e2e2;padding:20px;
+    span{
+      display:flex;
+      align-items: flex-start;
+      margin-bottom:15px;
+
+      label{width:80px;}
+      strong{flex:1;font-weight:500;}
+    }
+  }
 }
 
 @media screen and(max-width:960px){

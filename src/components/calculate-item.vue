@@ -1,5 +1,5 @@
 <template>
-  <dl class="list-item">
+  <dl class="item">
     <dt @click="itemToggle">
       <div class="left">
         <v-icon :color="isActive ? '#01a1dd' : ''"
@@ -120,7 +120,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.list-item {
+.item {
   background: #fff;
   border: 1px solid #e2e2e2;
   margin-bottom: 10px;
