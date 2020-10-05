@@ -8,7 +8,7 @@
         </span>
       </div>
       <div class="right">
-        <v-btn text>
+        <v-btn text @click="$router.push('/totalOrder')">
           <v-icon size="18" color="#c2c2c2">mdi-arrow-left</v-icon>
           <span>주문목록으로</span>
         </v-btn>
@@ -121,15 +121,20 @@
                 <strong>0981</strong>
               </span>
             </dd>
-          </dl>
 
-          <dl class="cancle-btns">
-            <dt>결제취소</dt>
-            <dd>
-              <v-btn text style="margin-right:5px;">
+            <dd class="btns">
+              <v-btn 
+                text 
+                style="margin-right:5px;"
+                @click="$refs.message.show(true)"
+              >
                 <span>부분주문취소</span>
               </v-btn>
-              <v-btn text style="margin-left:5px;">
+              <v-btn 
+                text 
+                style="margin-left:5px;"
+                @click="$refs.message.show(true)"
+              >
                 <v-icon size="18" color="#d22828">mdi-close</v-icon>
                 <span>전체주문취소</span>
               </v-btn>
@@ -139,12 +144,12 @@
       </v-row>
     
       <dl class="orderProduct">
-        <dt>주문상품</dt>
+        <dt>고객이 선택한 상품</dt>
         <dd>
           <div class="dataSection">
             <v-data-table
-              :headers="tHead"
-              :items="tData"
+              :headers="userOrderTable.tHead"
+              :items="userOrderTable.tData"
             >
             </v-data-table>
           </div>
@@ -154,12 +159,12 @@
       <v-row>
         <v-col cols="8" class="pr-8">
           <dl class="orderProduct">
-            <dt>검수완료</dt>
+            <dt>검수완료된 상품</dt>
             <dd>
               <div class="dataSection">
                 <v-data-table
-                  :headers="tHead"
-                  :items="tData"
+                  :headers="partnerTable.tHead"
+                  :items="partnerTable.tData"
                 >
                 </v-data-table>
               </div>
@@ -170,7 +175,7 @@
           <dl class="addPrice">
             <dt>추가결제정보</dt>
             <dd>
-              <span>
+              <span class="price">
                 <label>추가금액</label>
                 <strong>5,000 원</strong>
               </span>
@@ -183,40 +188,87 @@
         </v-col>
       </v-row>
     </div>
+    <Message ref="message" title="전체주문취소" description="주문을 취소할까요?"/>
   </div>
 </template>
 
 <script>
+import Message from "@/components/modal/message.vue";
+
 export default {
+  components:{
+    Message
+  },
   data(){
     return{
       isActive:0,
-      tHead:[
-        {text:'상품명', align:'left', sortable:true, value:'productName'},
-        {text:'수량', align:'left', sortable:true, value:'amount'},
-        {text:'가격', align:'left', sortable:true, value:'productPrice'},
-        {text:'합계', align:'left', sortable:true, value:'totalPrice'},
-      ],
-      tData:[
-        {
-          productName:'와이셔츠',
-          amount:'3',
-          productPrice:3500,
-          totalPrice:10500,
-        },
-        {
-          productName:'정장바지',
-          amount:'1',
-          productPrice:5500,
-          totalPrice:5500,
-        },
-        {
-          productName:'티셔츠',
-          amount:'1',
-          productPrice:3000,
-          totalPrice:3000,
-        },
-      ],
+      userOrderTable:{
+        tHead:[
+          {text:'상품명', align:'left', sortable:true, value:'productName'},
+          {text:'수량', align:'left', sortable:true, value:'amount'},
+          {text:'가격', align:'left', sortable:true, value:'productPrice'},
+          {text:'합계', align:'left', sortable:true, value:'totalPrice'},
+        ],
+        tData:[
+          {
+            productName:'와이셔츠',
+            amount:'3',
+            productPrice:3500,
+            totalPrice:10500,
+          },
+          {
+            productName:'정장바지',
+            amount:'1',
+            productPrice:5500,
+            totalPrice:5500,
+          },
+          {
+            productName:'티셔츠',
+            amount:'1',
+            productPrice:3000,
+            totalPrice:3000,
+          },
+        ],
+      },
+      partnerTable:{
+        tHead:[
+          {text:'상품명', align:'left', sortable:true, value:'productName'},
+          {text:'수량', align:'left', sortable:true, value:'amount'},
+          {text:'가격', align:'left', sortable:true, value:'productPrice'},
+          {text:'합계', align:'left', sortable:true, value:'totalPrice'},
+          {text:'변경여부', align:'left', sortable:true, value:'state'},
+        ],
+        tData:[
+          {
+            productName:'와이셔츠',
+            amount:'3',
+            productPrice:3500,
+            totalPrice:10500,
+            state:'수정',
+          },
+          {
+            productName:'정장바지',
+            amount:'2',
+            productPrice:5500,
+            totalPrice:5500,
+            state:'수정',
+          },
+          {
+            productName:'티셔츠',
+            amount:'1',
+            productPrice:3000,
+            totalPrice:3000,
+            state:'-',
+          },
+          {
+            productName:'운동복',
+            amount:'1',
+            productPrice:5000,
+            totalPrice:5000,
+            state:'추가',
+          },
+        ],
+      }
     }
   }
 }
@@ -314,7 +366,8 @@ export default {
 }
 
 dl{
-  margin-bottom:40px;
+  margin-bottom:60px;
+
   dt{
     margin-bottom:10px;
     font-size:16px;
@@ -356,21 +409,20 @@ dl.credit-info{
 
   dd.card{background:#f8f8f8;}
   dd:last-child{margin-bottom:0px;}
-}
 
-dl.cancle-btns{
-    dd{
-      display:flex;
-      align-items: center;
-      padding:0px;
-      border:0px;
+  dd.btns{
+    padding:0px;
+    border:0px;
+    margin-top:20px;
+    display:flex;
 
-      .v-btn{
-        flex:1;
-        border:1px solid #c2c2c2;
-      }
+    .v-btn{
+      flex:1;
+      border:1px solid #c2c2c2;
     }
   }
+}
+
 
 dl.orderProduct{
   dd{
@@ -389,6 +441,10 @@ dl.addPrice{
 
       label{width:80px;}
       strong{flex:1;font-weight:500;}
+    }
+
+    span.price{
+      strong{color:#E13D7A}
     }
   }
 }

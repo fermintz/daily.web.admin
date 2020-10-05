@@ -3,12 +3,12 @@
     <OrderDetail ref="orderDetail"/>
     <SearchOptions />    
 
-    <div class="dataSection">
-      <div class="table-top">
+    <div class="section">
+      <div class="table-options">
         <div class="number">
           검색결과 <strong>3</strong>건
         </div>
-        <div class="align">
+        <div class="range">
           -
         </div>
       </div>
@@ -29,7 +29,6 @@
 
 <script>
 import SearchOptions from '@/components/searchOptions.vue';
-import OrderDetail from '@/components/modal/orderDetail.vue';
 
 export default {
   data(){
@@ -84,7 +83,6 @@ export default {
   },
   components:{
     SearchOptions,
-    OrderDetail
   },
   methods:{
     orderDetail(){
@@ -96,30 +94,21 @@ export default {
 
 <style lang="scss" scoped>
 
+.table-options{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:20px;
 
-.dataSection{
-  padding:20px;
-  background:#fff;
-  border:1px solid #e2e2e2;
-  margin-top:10px;
-
-  .table-options{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom:20px;
-
-    .list-number{
-      strong{color:#d22828;font-weight:500;letter-spacing: 0;}
-    }
-    .range-btns{
-      .v-btn{
-        border:1px solid #c2c2c2;
-        height:28px;
-      }
+  .number{
+    strong{color:#d22828;font-weight:500;letter-spacing: 0;}
+  }
+  .range{
+    .v-btn{
+      border:1px solid #c2c2c2;
+      height:28px;
     }
   }
-
 }
 
 </style>

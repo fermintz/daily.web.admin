@@ -30,22 +30,15 @@
 
 <script>
 export default {
-  props: ["items"],
-  data() {
-    return {
-      isActive: true,
-    };
-  },
-
+  props: ["items", "index", "isActive"],
   computed: {
     nowPath() {
       return this.$route.path;
     },
   },
-
   methods: {
     toggle() {
-      this.isActive = !this.isActive;
+      this.$emit('activeChange', this.index);
     },
     currentRoute(path) {
       return this.nowPath === path;
@@ -60,7 +53,6 @@ dl {
   left: -1px;
   border-left: 1px solid #292929;
   padding: 0px;
-  
 
   dt {
     display: flex;
@@ -140,8 +132,9 @@ dl {
   }
 
   dd.close {
+    border-top:1px solid rgba(0,0,0,0.2);
     li {
-      animation: closeDrawer 0.5s forwards ease;
+      animation: closeDrawer 0.2s forwards ease;
       @keyframes closeDrawer {
         0% {
           height: 36px;

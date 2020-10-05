@@ -16,6 +16,9 @@
         </div>
       </div>
       <div class="contents fill-height">
+        <h2 v-show="this.$route.name !== 'home'">
+          {{this.$route.meta.name}}
+        </h2>
         <router-view />
       </div>
     </v-main>
@@ -64,6 +67,7 @@ export default {
     }
   }
 }
+
 
 
 </style>

@@ -151,7 +151,7 @@ export default {
 <style lang="scss" scoped>
 
 .searchOptions{
-
+  margin-bottom:10px;
   background:#fff;
   border:1px solid #e2e2e2;
 

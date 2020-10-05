@@ -23,6 +23,19 @@ p{margin:0;padding:0}
   background:#f2f2f2;
   padding:20px;
   padding-top:70px;
+
+  h2{
+    margin-bottom:10px;
+    font-weight:500;
+    letter-spacing: -0.7px;
+  }
+}
+
+.section{
+  margin-bottom:10px;
+  border:1px solid #e2e2e2;
+  background:#fff;
+  padding:20px;
 }
 
 /* 테이블 공통 CSS */

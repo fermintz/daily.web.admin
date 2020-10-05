@@ -3,7 +3,7 @@
 
     <SearchOptions />
 
-    <div class="dataSection">
+    <div class="section">
       <v-data-table
         :headers="tHead"
         :items="tData"
@@ -93,33 +93,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.dataSection {
-  background: #fff;
-  border: 1px solid #e2e2e2;
-  padding: 15px;
-  margin-top:10px;
 
-  .pagination {
-    margin-top: 20px;
-    font-size: 12px;
-  }
 
-  .tooltip{
-    position:relative;
+.pagination {
+  margin-top: 20px;
+  font-size: 12px;
+}
 
-    .tooltip-box{
-      position:absolute;
-      background:#fff;
-      border:1px solid #e2e2e2;
-      width:300px;
-      padding:10px;
-      right:100%;
-      margin-right:10px;
-      bottom:0;
-      z-index:99999;
-      border-radius:4px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
+.tooltip{
+  position:relative;
+
+  .tooltip-box{
+    position:absolute;
+    background:#fff;
+    border:1px solid #e2e2e2;
+    width:300px;
+    padding:10px;
+    right:100%;
+    margin-right:10px;
+    bottom:0;
+    z-index:99999;
+    border-radius:4px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
   }
 }
+
 </style>

@@ -1,13 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Calculate from "../views/calculate.vue";
-import CalculateEnd from "../views/calculate-end.vue";
+import Calculate from "../views/calc/calculate.vue";
+import CalculateEnd from "../views/calc/calculate-end.vue";
 import Login from "../views/login.vue"
 import DefaultLayout from "../layout/default.vue";
-import TotalOrder from "../views/totalOrder.vue";
-import AddRequest from "../views/addRequest.vue";
-import OrderDetail from "../views/orderDetail.vue";
+import TotalOrder from "../views/order/totalOrder.vue";
+import OrderDetail from "../views/order/detail.vue";
+import AddRequest from "../views/order/addRequest.vue";
+import Partners from "../views/partner/partners.vue";
+import PartnerAdd from "../views/partner/partner-add.vue";
+import MemberList from "../views/member/member-list.vue";
 
 Vue.use(VueRouter);
 
@@ -55,7 +58,34 @@ const routes = [
         component: AddRequest,
         meta:{
           cate:'주문관리',
-          name:'추가요청내역',
+          name:'추가결제요청',
+        }
+      },
+      {
+        path: "/partners",
+        name: "partners",
+        component: Partners,
+        meta:{
+          cate:'파트너관리',
+          name:'파트너 목록',
+        }
+      },
+      {
+        path: "/partner-add",
+        name: "partner-add",
+        component: PartnerAdd,
+        meta:{
+          cate:'파트너관리',
+          name:'파트너 등록',
+        }
+      },
+      {
+        path: "/member-list",
+        name: "member-list",
+        component: MemberList,
+        meta:{
+          cate:'회원관리',
+          name:'회원목록',
         }
       },
       {

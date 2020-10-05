@@ -1,6 +1,6 @@
 <template>
   <div class="addRequest">
-    <div class="dataSection">
+    <div class="section">
       <v-data-table
         :headers="tHead"
         :items="tData"
@@ -55,5 +55,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.dataSection{padding:20px;}
+
 </style>
