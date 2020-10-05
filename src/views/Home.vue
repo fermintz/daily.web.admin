@@ -50,7 +50,7 @@
 
       strong{
         font-size:24px;
-        color:
+        color:#E13D7A;
       }
       span{margin-left:5px;}
     }
